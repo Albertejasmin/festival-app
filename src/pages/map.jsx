@@ -1,6 +1,7 @@
 import React from "react";
 import FestivalMap from "@/components/festivalMap";
 
+// Ikke nødvendigt at have et component til.
 
 export default function FestivalPage({ scheduleData }) {
   return (
@@ -11,10 +12,7 @@ export default function FestivalPage({ scheduleData }) {
 }
 
 export async function getServerSideProps() {
-
-  const apiEndpoints = [
-    "https://nova-enchanted-confidence.glitch.me/schedule"
-  ];
+  const apiEndpoints = ["https://nova-enchanted-confidence.glitch.me/schedule"];
 
   // mapper igennem hver array alt efter hvilket endpoint det er og fetcher
   const apiRequest = apiEndpoints.map((endpoint) => fetch(endpoint));
@@ -23,10 +21,9 @@ export async function getServerSideProps() {
 
   const scheduleData = await scheduleRes.json();
 
-
   return {
     props: {
-      scheduleData
+      scheduleData,
     },
   };
 }

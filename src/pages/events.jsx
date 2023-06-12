@@ -1,15 +1,18 @@
 import styles from "@/styles/Home.module.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/footer";
 
 export default function Events() {
+  // false gør at den lange text ikke er vist.
   const [showLongText, setShowLongText] = useState(false);
-  const [buttonText, setButtonText] = useState('Read More');
+  const [buttonText, setButtonText] = useState("Read More");
 
+  // onClick på button der sætter denne funktion igang.
   const handleReadMore = () => {
     setShowLongText(!showLongText);
-    setButtonText(showLongText ? 'Read More' : 'Read Less');
+    // !sætter det modsatte, altså den lange og button ændres
+    setButtonText(showLongText ? "Read More" : "Read Less");
   };
 
   return (
@@ -20,18 +23,11 @@ export default function Events() {
         <img src="/neonParty.jpg" alt="billede1" />
         <h3>NEON PARTY AT VANAHEIM</h3>
         <p className={styles.dato}>10th of august</p>
-        <p className={styles.kort_tekst}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          temporibus laboriosam
-        </p>
+        <p className={styles.kort_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam</p>
         <button onClick={handleReadMore}>{buttonText}</button>
         {showLongText && (
           <>
-            <p className={styles.lang_tekst}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              temporibus laboriosam Lorem ipsum dolor sit amet, consectetur
-            </p>
-        
+            <p className={styles.lang_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam Lorem ipsum dolor sit amet, consectetur</p>
           </>
         )}
       </article>
@@ -39,18 +35,11 @@ export default function Events() {
         <img src="/seafood.jpg" alt="billede1" />
         <h3>FISKEBAREN POP UP</h3>
         <p className={styles.dato}>11th - 13th of august</p>
-        <p className={styles.kort_tekst}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          temporibus laboriosam
-        </p>
+        <p className={styles.kort_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam</p>
         <button onClick={handleReadMore}>{buttonText}</button>
         {showLongText && (
           <>
-            <p className={styles.lang_tekst}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              temporibus laboriosam Lorem ipsum dolor sit amet, consectetur
-            </p>
-        
+            <p className={styles.lang_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam Lorem ipsum dolor sit amet, consectetur</p>
           </>
         )}
       </article>
@@ -58,18 +47,11 @@ export default function Events() {
         <img src="/socialDining.jpg" alt="billede1" />
         <h3>SOCIAL DINING</h3>
         <p className={styles.dato}>Every wednesday</p>
-        <p className={styles.kort_tekst}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          temporibus laboriosam
-        </p>
+        <p className={styles.kort_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam</p>
         <button onClick={handleReadMore}>{buttonText}</button>
         {showLongText && (
           <>
-            <p className={styles.lang_tekst}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              temporibus laboriosam Lorem ipsum dolor sit amet, consectetur
-            </p>
-        
+            <p className={styles.lang_tekst}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus laboriosam Lorem ipsum dolor sit amet, consectetur</p>
           </>
         )}
       </article>
@@ -77,6 +59,3 @@ export default function Events() {
     </section>
   );
 }
-
-
-       

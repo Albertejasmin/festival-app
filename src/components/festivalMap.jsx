@@ -16,6 +16,7 @@ export default function FestivalMap({ scheduleData }) {
   const containerWidth = 180;
 
   useEffect(() => {
+    // Prøver at placere telte i forhold til window size / lidt knas på koden.
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       setWindowHeight(window.innerHeight);
@@ -26,8 +27,8 @@ export default function FestivalMap({ scheduleData }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
-  //funktion der kører ved klik på telt og sætter tent værdi alt efter hvilket img vi klikker på + sætter setShowModal = true 
+
+  //funktion der kører ved klik på telt og sætter tent værdi alt efter hvilket img vi klikker på + sætter setShowModal = true
   function handleTentClick(tent) {
     setSelectedTent(tent), setShowModal(true);
   }
@@ -40,6 +41,7 @@ export default function FestivalMap({ scheduleData }) {
     setHoveredImg(null);
   }
   function getImageStyle(index) {
+    // scaler teltenes størrelser
     const scale = hoveredImg === index ? 1.2 : 1;
 
     // Define custom sizes and positions for each image
@@ -47,17 +49,14 @@ export default function FestivalMap({ scheduleData }) {
       1: {
         width: windowWidth * 0.3,
         height: windowHeight * 0.3,
-        
       },
       2: {
         width: windowWidth * 0.3,
         height: windowHeight * 0.3,
-        
       },
       3: {
         width: windowWidth * 0.25,
         height: windowHeight * 0.25,
-        
       },
     };
 
@@ -78,47 +77,27 @@ export default function FestivalMap({ scheduleData }) {
     <>
       {showModal ? (
         selectedTent === "Telt1" ? (
-          <ScheduleCardMID
-            scheduleData={scheduleData}
-            selectedTent={selectedTent}
-            showModal={showModal}
-            handleCloseModal={setShowModal}
-          />
+          <ScheduleCardMID scheduleData={scheduleData} selectedTent={selectedTent} showModal={showModal} handleCloseModal={setShowModal} />
         ) : selectedTent === "Telt2" ? (
-          <ScheduleCardJOTU
-            scheduleData={scheduleData}
-            selectedTent={selectedTent}
-            showModal={showModal}
-            handleCloseModal={setShowModal}
-          />
+          <ScheduleCardJOTU scheduleData={scheduleData} selectedTent={selectedTent} showModal={showModal} handleCloseModal={setShowModal} />
         ) : (
-          <ScheduleCardVAN
-            scheduleData={scheduleData}
-            selectedTent={selectedTent}
-            showModal={showModal}
-            handleCloseModal={setShowModal}
-          />
+          <ScheduleCardVAN scheduleData={scheduleData} selectedTent={selectedTent} showModal={showModal} handleCloseModal={setShowModal} />
         )
       ) : (
         <div className={styles.mapDiv}>
           <div className={styles.map_top}>
-          <Navigation></Navigation>
+            <Navigation></Navigation>
             <h1 className={styles.map_overskrift}>FESTIVAL MAP </h1>
-            <p className={styles.map_underOverskrift}>
-              click on the tents to see schedule{" "}
-            </p>
+            <p className={styles.map_underOverskrift}>click on the tents to see schedule </p>
           </div>
-          <img
-            src="/map.svg"
-            alt="Map"
-            style={{ height: "100%", objectFit: "cover", width: "100%" }}
-          />
+          <img src="/map.svg" alt="Map" style={{ height: "100%", objectFit: "cover", width: "100%" }} />
 
           <img
             className={styles.telt1}
             src="/telt1.svg"
             alt="Telt1"
             style={{
+              // ...getImageStyle er kun placering, som defineret over
               ...getImageStyle(1),
             }}
             onMouseOver={() => handleMouseOver(1)}
